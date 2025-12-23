@@ -99,6 +99,32 @@
 
   <div class="status" id="statusText">Light Mode Enabled</div>
 </div>
- 
+ <script>
+  const body = document.body;
+  const icon = document.getElementById("icon");
+  const statusText = document.getElementById("statusText");
+
+  // Load saved theme
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "dark") {
+    body.classList.add("dark");
+    icon.textContent = "🌙";
+    statusText.textContent = "Dark Mode Enabled";
+  }
+
+  function toggleTheme() {
+    body.classList.toggle("dark");
+
+    if (body.classList.contains("dark")) {
+      localStorage.setItem("theme", "dark");
+      icon.textContent = "🌙";
+      statusText.textContent = "Dark Mode Enabled";
+    } else {
+      localStorage.setItem("theme", "light");
+      icon.textContent = "☀️";
+      statusText.textContent = "Light Mode Enabled";
+    }
+  }
+</script>
 </body>
 </html>
